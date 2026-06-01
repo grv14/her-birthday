@@ -1,0 +1,201 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Akshita 🎂</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="balloon left">🎈</div>
+<div class="balloon right">🎈</div>
+
+<div class="card">
+
+    <div class="cake">🎂</div>
+
+    <h1>Happy Birthday Akshita 💖</h1>
+
+    <div id="letter"></div>
+
+    <div class="buttons">
+        <button onclick="prevPage()">◀</button>
+        <button onclick="nextPage()">▶</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html><style>body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#fff0f6,#ffe4ec);
+    font-family:'Comic Sans MS',cursive;
+    overflow:hidden;
+}
+
+.card{
+    width:90%;
+    max-width:450px;
+    background:white;
+    padding:25px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 0 25px rgba(255,105,180,0.3);
+}
+
+.cake{
+    font-size:70px;
+    margin-bottom:10px;
+}
+
+h1{
+    color:#ff4f9a;
+}
+
+#letter{
+    color:#6d2954;
+    font-size:18px;
+    line-height:1.7;
+    min-height:180px;
+    margin-top:20px;
+}
+
+.buttons button{
+    border:none;
+    background:#ff8fc4;
+    color:white;
+    font-size:22px;
+    padding:10px 20px;
+    border-radius:12px;
+    margin:10px;
+    cursor:pointer;
+}
+
+.balloon{
+    position:absolute;
+    font-size:80px;
+    opacity:0.50; /* Balloon ko halka karega */
+    animation:float 3s ease-in-out infinite;
+    z-index:0;
+}
+
+.left{
+    left:20px;
+}
+
+.right{
+    right:20px;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-20px);
+    }
+}
+
+.candy{
+    position:fixed;
+    top:-50px;
+    font-size:30px;
+    pointer-events:none;
+    z-index:999;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-50px) rotate(0deg);
+    }
+    to{
+        transform:translateY(110vh) rotate(720deg);
+    }
+}
+
+.card{
+    position:relative;
+    z-index:10;
+}
+
+.candy{
+    z-index:1;
+}</style><script>let pages = [
+
+`🎉 Happy Birthday Akshita 💖
+
+Aaj ka din mere liye bhi special hai,
+kyunki aaj meri favourite person ka birthday hai. 🎂`,
+
+`🌸 Thank You
+
+Meri life me aane ke liye,
+mujhe samajhne ke liye,
+aur har din ko beautiful banane ke liye. 💕`,
+
+`💌 Birthday Wish
+
+Main dua karta hu ki tum hamesha
+khush raho, healthy raho,
+aur tumhare saare dreams complete ho jaye. ✨`,
+
+`❤️ Final Page
+
+You are my favourite notification,
+my favourite smile,
+and my favourite person.
+
+Happy Birthday My Cute Little Penguin🎂💖`
+];
+
+let currentPage = 0;
+let letter = document.getElementById("letter");
+
+letter.innerHTML = pages[0];
+
+function nextPage(){
+    if(currentPage < pages.length - 1){
+        currentPage++;
+        letter.innerHTML = pages[currentPage];
+    }
+}
+
+function prevPage(){
+    if(currentPage > 0){
+        currentPage--;
+        letter.innerHTML = pages[currentPage];
+    }
+}
+
+ function createCandy(){
+
+    const candy = document.createElement("div");
+    candy.className = "candy";
+
+    const candies = ["🍬","🍭","🧁","🍫","🍩"];
+
+    candy.innerHTML =
+        candies[Math.floor(Math.random()*candies.length)];
+
+    candy.style.left =
+        Math.random() * window.innerWidth + "px";
+
+    candy.style.animationDuration =
+        (4 + Math.random()*4) + "s";
+
+    document.body.appendChild(candy);
+
+    setTimeout(()=>{
+        candy.remove();
+    },8000);
+}
+
+// Har 300ms me nayi candy create hogi
+setInterval(createCandy, 300);</script>
